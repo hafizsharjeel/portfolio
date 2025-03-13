@@ -1,0 +1,54 @@
+#root {
+  text-align: center;
+}
+
+body, #root {
+  color: #C0C0C0; /* This is a silver light color */
+}
+
+.hacker-text {
+  animation: colorCycle 2s infinite alternate;
+}
+
+.hacker-text {
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px #00ff00;
+  }
+  2% {
+    opacity: 1;
+    text-shadow: 0 0 10px #00ff00;
+  }
+  5% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px #00ff00;
+  }
+  8% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ff00;
+  }
+  10% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0 0 10px #00ff00;
+  }
+  22% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px #00ff00;
+  }
+  25% {
+    opacity: 1;
+    text-shadow: 0 0 15px #00ff00;
+  }
+  30%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px #00ff00;
+  }
+}
