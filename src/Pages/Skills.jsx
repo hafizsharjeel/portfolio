@@ -148,7 +148,7 @@ const Skills = () => {
                           { name: "Advanced IP Scanner", emoji: "🔍" },
                           { name: "Metasploit Framework", image: "/imgs/metasploit.png" },
                           { name: "Wireshark", image: "/imgs/wireshark.png" },
-                          { name: "John The Ripper", image: "/imgs/John.png" },
+                          { name: "John The Ripper", image: "https://assets.offsec.tools/tools/john-the-ripper-3631.png" },
                           { name: "Splunk", image: "/imgs/splunk.png" },
                           { name: "IBM QRadar", image: "/imgs/qradar.png" },
                           
