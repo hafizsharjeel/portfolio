@@ -146,7 +146,7 @@ const Skills = () => {
                           { name: "Greenbone OpenVAS", image: "/imgs/openvas.png" },
                           { name: "Nikto", image: "/imgs/nikto.png" },
                           { name: "Advanced IP Scanner", emoji: "🔍" },
-                          { name: "Metasploit Framework", image: "/imgs/metasploit.png" },
+                          { name: "Metasploit Framework", image: "../imgs/metasploit.png" },
                           { name: "Wireshark", image: "/imgs/wireshark.png" },
                           { name: "John The Ripper", image: "https://assets.offsec.tools/tools/john-the-ripper-3631.png" },
                           { name: "Splunk", image: "/imgs/splunk.png" },
