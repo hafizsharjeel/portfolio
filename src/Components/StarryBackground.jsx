@@ -67,7 +67,7 @@ const StarryBackground = () => {
             className="fixed inset-0 z-0"
             style={{
                 background: "black",
-                zIndex: -1,
+                zIndex: 1,
             }}
         />
     );
