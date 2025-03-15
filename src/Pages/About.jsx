@@ -1,207 +1,383 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { FaDownload, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+"use client"
+
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import { Download, Linkedin, Github, MessageSquare, Shield, Code, Terminal, Lock, Server, Database } from "lucide-react"
 
 const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  }
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
       transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
       },
     },
-  };
+  }
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
+  // Cybersecurity skills with icons
+  const securitySkills = [
+    { name: "Penetration Testing", icon: <Terminal className="h-5 w-5" /> },
+    { name: "Network Security", icon: <Server className="h-5 w-5" /> },
+    { name: "Threat Analysis", icon: <Shield className="h-5 w-5" /> },
+    { name: "Security Audits", icon: <Lock className="h-5 w-5" /> },
+    { name: "Log Monitoring", icon: <Database className="h-5 w-5" /> },
+    { name: "Vulnerability Assessment", icon: <Code className="h-5 w-5" /> },
+  ]
 
   return (
-    <div className="min-h-screen bg-transparent flex flex-col">
-      <div className="flex-grow">
-        <div className="max-w-8xl mx-auto text-gray-300 relative p-8 pt-20">
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl font-extrabold text-center mb-5 flex items-center justify-center"
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-500 to-green-700">
+    <div className="min-h-screen bg-[#0a0e17] text-gray-100 overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="fixed inset-0 z-0 opacity-10">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxOGE0NWIiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-green-500 rounded-full mix-blend-multiply filter blur-[150px] opacity-20 animate-blob"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-[150px] opacity-10 animate-blob animation-delay-2000"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        {/* Header with animated underline */}
+        <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 bg-clip-text text-transparent">
               About Me
             </span>
-            <span className="ml-2">🎓</span>
-          </motion.h1>
+          </h1>
+          <div className="relative h-1 w-24 mx-auto overflow-hidden rounded-full bg-gray-700">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-600"
+              animate={{
+                x: ["-100%", "100%"],
+              }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 2,
+                ease: "easeInOut",
+              }}
+            />
+          </div>
+        </motion.div>
 
-          {/* Profile section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="bg-gray-800 bg-opacity-30 p-8 rounded-lg shadow-2xl mb-5" // backdrop-blur-md
-          >
-            <div className="flex flex-col md:flex-row items-center mb-8">
-              <motion.img
-                src="https://avatars.githubusercontent.com/u/191956513?v=4"
-                alt="Hafiz Sharjeel Shakeel"
-                className="w-48 h-48 rounded-full object-cover shadow-lg mb-4 md:mb-0 md:mr-8 ring-4 ring-green-500 ring-opacity-50"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              />
-              <div>
-                <h2 className="text-3xl font-semibold mb-4 text-left">🧑 Profile</h2>
-                <p className="text-gray-300 text-lg leading-relaxed mb-4 text-left">
-                  Hello! I am <strong>Hafiz Sharjeel Shakeel</strong>, a passionate <strong>Cybersecurity Enthusiast, Penetration Tester and SOC analyst</strong> dedicated to securing digital environments and identifying vulnerabilities before malicious actors exploit them. Currently pursuing a <strong>B.Sc. in Computer Science</strong>, I specialize in <strong>Ethical Hacking, Analyzing and Monitoring logs, Network Security, and Vulnerability Assessment, </strong> to strengthen cybersecurity defenses.
-                </p>
-                <p className="text-gray-300 text-lg leading-relaxed mb-4 text-left">
-                  My expertise spans <strong>Penetration Testing, Threat Analysis, and Security Audits</strong>. Proficient in <strong>Nmap, Metasploit, Burp Suite, Nessus, Wireshark, John The Ripper, Splunk, and IBM QRadar, </strong>, I am committed to solving complex security challenges with innovative and robust cybersecurity solutions.
-                </p>
+        {/* Profile Section with hexagonal border */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          className="relative mb-24"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-600/20 rounded-2xl transform -rotate-1"></div>
+          <div className="relative bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-2xl border border-green-500/20 p-8 md:p-10">
+            <div className="flex flex-col lg:flex-row gap-10 items-center lg:items-start">
+              <div className="flex-shrink-0">
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-600 rounded-full blur-sm opacity-70"></div>
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                    className="relative"
+                  >
+                    <img
+                      src="https://avatars.githubusercontent.com/u/191956513?v=4"
+                      alt="Hafiz Sharjeel Shakeel"
+                      className="w-48 h-48 rounded-full object-cover border-4 border-gray-900 shadow-xl"
+                    />
+                    <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-2 rounded-full shadow-lg">
+                      <Shield className="h-5 w-5" />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              <div className="flex-1">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">Hafiz Sharjeel Shakeel</h2>
+                  <div className="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
+                    Cybersecurity Specialist
+                  </div>
+                </div>
+
+                <div className="space-y-4 text-gray-300">
+                  <p className="leading-relaxed text-lg">
+                    A passionate{" "}
+                    <span className="font-semibold text-green-400">
+                      Cybersecurity Enthusiast, Penetration Tester and SOC analyst
+                    </span>{" "}
+                    dedicated to securing digital environments and identifying vulnerabilities before malicious actors
+                    exploit them.
+                  </p>
+                  <p className="leading-relaxed">
+                    Currently pursuing a <span className="font-semibold text-green-400">B.Sc. in Computer Science</span>
+                    , I specialize in{" "}
+                    <span className="font-semibold">
+                      Ethical Hacking, Analyzing and Monitoring logs, Network Security, and Vulnerability Assessment
+                    </span>{" "}
+                    to strengthen cybersecurity defenses.
+                  </p>
+
+                  <div className="pt-4">
+                    <h3 className="text-xl font-semibold text-green-400 mb-3">Expertise</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {securitySkills.map((skill, index) => (
+                        <div key={index} className="flex items-center gap-2 bg-gray-900/50 rounded-lg px-3 py-2">
+                          <div className="text-green-500">{skill.icon}</div>
+                          <span>{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "🗣️ Languages",
-                  content: "English (Professional), Urdu (Native)"
-                },
-                // { 
-                //   title: "📊 Visualization Tools", 
-                //   content: "Microsoft Power BI, Matplotlib, Seaborn" 
-                // },
-                // {
-                //   title: "🛠️ Technical Skills",
-                //   content: "Python, SQL, Scikit-learn, TensorFlow, PyTorch, Pandas, NumPy, SpaCy, NLTK ..."
-                // },                
-                {
-                  title: "🌱 Interests",
-                  content: "Learning New Things 📖🔍, Exploring New Technologies 💡🧠"
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ x: index % 2 === 0 ? -50 : 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="bg-gray-700 bg-opacity-50 p-6 rounded-lg shadow-md"
-                >
-                  <h3 className="text-2xl font-semibold mb-2 text-green-400">{item.title}</h3>
-                  <p className="text-gray-300">{item.content}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        {/* Tools & Languages Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          className="mb-24"
+        >
+          <h2 className="text-3xl font-bold mb-8 inline-flex items-center">
+            <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+              Professional Arsenal
+            </span>
+            <div className="h-1 w-10 bg-green-500 ml-4"></div>
+          </h2>
 
-          {/* Education section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            variants={containerVariants}
-            className="bg-gray-800 bg-opacity-30 p-8 rounded-lg shadow-2xl mb-12 " // backdrop-blur-md
-          >
-            <h2 className="text-3xl font-semibold mb-6 text-green-400">🎓 Education</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  degree: "Higher Secondary School Certificate (HSSC)",
-                  year: "2021 - 2023",
-                  institution: "Adamjee Govt. Science College- Karachi",
-                  grade: "First Class with Distinction",
-                },
-                {
-                  degree: "B.Sc. in Computer Science",
-                  year: "2023 - Present",
-                  institution: "Sindh Madressatul Islam University",
-                  grade: "First Class with Distinction",
-                },
-              ].map((edu, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="bg-gray-700 bg-opacity-50 p-6 rounded-lg shadow-md"
-                >
-                  <h3 className="text-xl font-semibold text-green-400">{edu.degree}</h3>
-                  <p className="text-gray-300">{edu.year}</p>
-                  <p className="text-gray-300">{edu.institution}</p>
-                  <p className="text-gray-300">Grade: {edu.grade}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          {/* Inspirational Quote */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            variants={containerVariants}
-          //   className="bg-gray-800 bg-opacity-30 p-8 rounded-lg shadow-2xl backdrop-blur-md"
-          >
-            
-          </motion.div>
-          <br /><br />
-          {/* Get In Touch section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            variants={containerVariants}
-          >
-            <h2 className="text-3xl font-semibold mb-6 text-green-400"><center>📬 Get In Touch</center></h2>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={fadeInUp} className="group">
+              <div className="h-full bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 shadow-xl transition-all duration-300 hover:border-green-500/50 hover:shadow-green-500/5">
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="p-2 bg-green-500/20 rounded-lg mr-4">
+                      <Terminal className="h-6 w-6 text-green-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">Security Tools</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {[
+                      "Nmap",
+                      "Metasploit",
+                      "Burp Suite",
+                      "Nessus",
+                      "Wireshark",
+                      "John The Ripper",
+                      "Splunk",
+                      "IBM QRadar",
+                    ].map((tool, index) => (
+                      <div key={index} className="flex items-center">
+                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                        <span className="text-gray-300">{tool}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="h-1 w-full bg-gradient-to-r from-green-400 to-emerald-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp} className="group">
+              <div className="h-full bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 shadow-xl transition-all duration-300 hover:border-green-500/50 hover:shadow-green-500/5">
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="p-2 bg-green-500/20 rounded-lg mr-4">
+                      <MessageSquare className="h-6 w-6 text-green-400" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">Languages & Interests</h3>
+                  </div>
+
+                  <div className="mb-6">
+                    <h4 className="text-green-400 font-medium mb-2">Languages</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-gray-700 rounded-full text-sm">English (Professional)</span>
+                      <span className="px-3 py-1 bg-gray-700 rounded-full text-sm">Urdu (Native)</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-green-400 font-medium mb-2">Interests</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-gray-700 rounded-full text-sm">Learning New Technologies 📖</span>
+                      <span className="px-3 py-1 bg-gray-700 rounded-full text-sm">Cybersecurity Research 🔍</span>
+                      <span className="px-3 py-1 bg-gray-700 rounded-full text-sm">Ethical Hacking 💡</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-1 w-full bg-gradient-to-r from-green-400 to-emerald-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Education Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          className="mb-24"
+        >
+          <h2 className="text-3xl font-bold mb-8 inline-flex items-center">
+            <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+              Education
+            </span>
+            <div className="h-1 w-10 bg-green-500 ml-4"></div>
+          </h2>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-0 md:left-1/2 top-0 h-full w-px bg-gray-700 transform md:translate-x-0 translate-x-4"></div>
+
+            {[
+              {
+                degree: "B.Sc. in Computer Science",
+                year: "2023 - Present",
+                institution: "Sindh Madressatul Islam University",
+                grade: "First Class with Distinction",
+                isRight: true,
+              },
+              {
+                degree: "Higher Secondary School Certificate (HSSC)",
+                year: "2021 - 2023",
+                institution: "Adamjee Govt. Science College- Karachi",
+                grade: "First Class with Distinction",
+                isRight: false,
+              },
+            ].map((edu, index) => (
+              <div
+                key={index}
+                className={`relative mb-12 md:mb-16 ${edu.isRight ? "md:ml-1/2" : "md:mr-1/2 md:text-right"}`}
+              >
+                <div className={`flex ${edu.isRight ? "" : "md:justify-end"}`}>
+                  <div
+                    className={`absolute top-0 ${edu.isRight ? "left-0 md:left-0 -translate-x-1/2" : "left-0 md:right-0 md:left-auto md:translate-x-1/2"} -translate-y-1/3 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-900 z-10`}
+                  ></div>
+
+                  <motion.div
+                    variants={fadeInUp}
+                    className={`relative ml-12 md:ml-0 ${edu.isRight ? "md:ml-12" : "md:mr-12"} bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 shadow-xl hover:border-green-500/30 transition-all duration-300`}
+                  >
+                    <div className="p-6">
+                      <div className="mb-2">
+                        <span className="inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
+                          {edu.year}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2">{edu.degree}</h3>
+                      <div className="space-y-1 text-gray-300">
+                        <p>{edu.institution}</p>
+                        <p className="font-medium text-green-400">{edu.grade}</p>
+                      </div>
+                    </div>
+                    <div className="h-1 w-full bg-gradient-to-r from-green-400 to-emerald-600"></div>
+                  </motion.div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Get In Touch Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInUp}
+          className="text-center"
+        >
+          <h2 className="text-3xl font-bold mb-8 inline-block">
+            <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+              Get In Touch
+            </span>
+          </h2>
+
+          <div className="max-w-3xl mx-auto bg-gray-800/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700 shadow-2xl p-8">
+            <p className="text-gray-300 mb-8">
+              Ready to collaborate on cybersecurity projects or discuss potential opportunities? Reach out through any
+              of these channels:
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <motion.a
                 href="https://drive.google.com/uc?export=download&id=1JlBHplDlfr8GAdsuD6cU6hwh1oVHvcQH"
-                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white py-3 px-6 rounded-full shadow-lg flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                variants={itemVariants}
+                className="group flex flex-col items-center justify-center p-4 bg-gray-900/50 rounded-xl hover:bg-green-500/10 transition-all duration-300 border border-transparent hover:border-green-500/30"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <FaDownload className="mr-2" /> Resume 📄
+                <div className="p-3 bg-green-500/20 rounded-full mb-3 group-hover:bg-green-500/30 transition-colors duration-300">
+                  <Download className="h-6 w-6 text-green-400" />
+                </div>
+                <span className="font-medium">Resume</span>
               </motion.a>
+
               <motion.a
                 href="https://pk.linkedin.com/in/hafiz-sharjeel-shakeel-260b67179"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-blue-600 text-white py-3 px-6 rounded-full shadow-lg flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                variants={itemVariants}
+                className="group flex flex-col items-center justify-center p-4 bg-gray-900/50 rounded-xl hover:bg-[#0077B5]/10 transition-all duration-300 border border-transparent hover:border-[#0077B5]/30"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <FaLinkedin className="mr-2" /> LinkedIn 🔗
+                <div className="p-3 bg-[#0077B5]/20 rounded-full mb-3 group-hover:bg-[#0077B5]/30 transition-colors duration-300">
+                  <Linkedin className="h-6 w-6 text-[#0077B5]" />
+                </div>
+                <span className="font-medium">LinkedIn</span>
               </motion.a>
 
               <motion.a
-                href="https://wa.me/+923492993488" 
+                href="https://wa.me/+923492993488"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-green-600 text-white py-3 px-6 rounded-full shadow-lg flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                variants={itemVariants} // 
+                className="group flex flex-col items-center justify-center p-4 bg-gray-900/50 rounded-xl hover:bg-[#25D366]/10 transition-all duration-300 border border-transparent hover:border-[#25D366]/30"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <FaWhatsapp className="mr-2" /> WhatsApp 📞
+                <div className="p-3 bg-[#25D366]/20 rounded-full mb-3 group-hover:bg-[#25D366]/30 transition-colors duration-300">
+                  <MessageSquare className="h-6 w-6 text-[#25D366]" />
+                </div>
+                <span className="font-medium">WhatsApp</span>
               </motion.a>
 
               <motion.a
                 href="https://github.com/hafizsharjeel"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-gray-700 text-white py-3 px-6 rounded-full shadow-lg flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                variants={itemVariants}
+                className="group flex flex-col items-center justify-center p-4 bg-gray-900/50 rounded-xl hover:bg-gray-700/30 transition-all duration-300 border border-transparent hover:border-gray-600"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <FaGithub className="mr-2" /> GitHub 🖥️
+                <div className="p-3 bg-gray-700/20 rounded-full mb-3 group-hover:bg-gray-700/30 transition-colors duration-300">
+                  <Github className="h-6 w-6 text-white" />
+                </div>
+                <span className="font-medium">GitHub</span>
               </motion.a>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default About;
+export default About
+
