@@ -119,6 +119,7 @@ const Skills = () => {
 
           {/* Technical Skills section */}
           <motion.div
+<<<<<<< HEAD
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
@@ -161,6 +162,51 @@ const Skills = () => {
               ))}
             </div>
           </motion.div>
+=======
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.3 }}
+                      variants={containerVariants}
+                      className="bg-gray-800 bg-opacity-30 p-8 rounded-lg shadow-2xl mb-5"
+                    >
+                      <h2 className="text-4xl font-extrabold mb-6 flex items-center justify-center">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-green-500 to-green-700">
+                          Tools
+                        </span>
+                        <span className="ml-2">⚒</span>
+                      </h2>
+                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {[
+                          { name: "Burpsuite", image: "/imgs/burpsuite.png" },
+                          { name: "SQLMAP", image: "/imgs/sqlmap.png" },
+                          { name: "Nmap", image: "/imgs/nmap.png" },
+                          { name: "Tenable Nessus ", image: "/imgs/nessus.png" },
+                          { name: "Greenbone OpenVAS", image: "/imgs/openvas.png" },
+                          { name: "Nikto", image: "/imgs/nikto.png" },
+                          { name: "Advanced IP Scanner", emoji: "🔍" },
+                          { name: "Metasploit Framework", image: "../imgs/metasploit.png" },
+                          { name: "Wireshark", image: "/imgs/wireshark.png" },
+                          { name: "John The Ripper", image: "https://assets.offsec.tools/tools/john-the-ripper-3631.png" },
+                          { name: "Splunk", image: "/imgs/splunk.png" },
+                          { name: "IBM QRadar", image: "/imgs/qradar.png" },
+                          
+                        ].map((skill, index) => (
+                          <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            className="bg-gray-700 bg-opacity-50 p-4 rounded-lg shadow-md flex items-center space-x-2"
+                          >
+                           {skill.image ? (
+    <img src={skill.image} alt={skill.name} className="h-8 w-8" />
+  ) : (
+    <span className="text-2xl">{skill.emoji}</span>
+  )}
+  <span className="text-xl">{skill.name}</span>
+</motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+>>>>>>> 3b1f76d63008d4f288a4299665288ef448ca6126
 
           {/* Certificates section */}
           <motion.div
@@ -207,3 +253,7 @@ const Skills = () => {
 
 export default Skills
 
+<<<<<<< HEAD
+=======
+export default Skills;
+>>>>>>> 3b1f76d63008d4f288a4299665288ef448ca6126
