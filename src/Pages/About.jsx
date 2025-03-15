@@ -2,7 +2,18 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { Download, Linkedin, Github, MessageSquare, Shield, Code, Terminal, Lock, Server, Database } from "lucide-react"
+import {
+  FaDownload,
+  FaLinkedin,
+  FaGithub,
+  FaWhatsapp,
+  FaShieldAlt,
+  FaCode,
+  FaTerminal,
+  FaLock,
+  FaServer,
+  FaDatabase,
+} from "react-icons/fa"
 
 const About = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -35,12 +46,12 @@ const About = () => {
 
   // Cybersecurity skills with icons
   const securitySkills = [
-    { name: "Penetration Testing", icon: <Terminal className="h-5 w-5" /> },
-    { name: "Network Security", icon: <Server className="h-5 w-5" /> },
-    { name: "Threat Analysis", icon: <Shield className="h-5 w-5" /> },
-    { name: "Security Audits", icon: <Lock className="h-5 w-5" /> },
-    { name: "Log Monitoring", icon: <Database className="h-5 w-5" /> },
-    { name: "Vulnerability Assessment", icon: <Code className="h-5 w-5" /> },
+    { name: "Penetration Testing", icon: <FaTerminal className="h-5 w-5" /> },
+    { name: "Network Security", icon: <FaServer className="h-5 w-5" /> },
+    { name: "Threat Analysis", icon: <FaShieldAlt className="h-5 w-5" /> },
+    { name: "Security Audits", icon: <FaLock className="h-5 w-5" /> },
+    { name: "Log Monitoring", icon: <FaDatabase className="h-5 w-5" /> },
+    { name: "Vulnerability Assessment", icon: <FaCode className="h-5 w-5" /> },
   ]
 
   return (
@@ -100,7 +111,7 @@ const About = () => {
                       className="w-48 h-48 rounded-full object-cover border-4 border-gray-900 shadow-xl"
                     />
                     <div className="absolute -bottom-2 -right-2 bg-green-500 text-white p-2 rounded-full shadow-lg">
-                      <Shield className="h-5 w-5" />
+                      <FaShieldAlt className="h-5 w-5" />
                     </div>
                   </motion.div>
                 </div>
@@ -170,7 +181,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="p-2 bg-green-500/20 rounded-lg mr-4">
-                      <Terminal className="h-6 w-6 text-green-400" />
+                      <FaTerminal className="h-6 w-6 text-green-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white">Security Tools</h3>
                   </div>
@@ -201,7 +212,7 @@ const About = () => {
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <div className="p-2 bg-green-500/20 rounded-lg mr-4">
-                      <MessageSquare className="h-6 w-6 text-green-400" />
+                      <FaWhatsapp className="h-6 w-6 text-green-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white">Languages & Interests</h3>
                   </div>
@@ -325,7 +336,7 @@ const About = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="p-3 bg-green-500/20 rounded-full mb-3 group-hover:bg-green-500/30 transition-colors duration-300">
-                  <Download className="h-6 w-6 text-green-400" />
+                  <FaDownload className="h-6 w-6 text-green-400" />
                 </div>
                 <span className="font-medium">Resume</span>
               </motion.a>
@@ -339,7 +350,7 @@ const About = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="p-3 bg-[#0077B5]/20 rounded-full mb-3 group-hover:bg-[#0077B5]/30 transition-colors duration-300">
-                  <Linkedin className="h-6 w-6 text-[#0077B5]" />
+                  <FaLinkedin className="h-6 w-6 text-[#0077B5]" />
                 </div>
                 <span className="font-medium">LinkedIn</span>
               </motion.a>
@@ -353,7 +364,7 @@ const About = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="p-3 bg-[#25D366]/20 rounded-full mb-3 group-hover:bg-[#25D366]/30 transition-colors duration-300">
-                  <MessageSquare className="h-6 w-6 text-[#25D366]" />
+                  <FaWhatsapp className="h-6 w-6 text-[#25D366]" />
                 </div>
                 <span className="font-medium">WhatsApp</span>
               </motion.a>
@@ -367,7 +378,7 @@ const About = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="p-3 bg-gray-700/20 rounded-full mb-3 group-hover:bg-gray-700/30 transition-colors duration-300">
-                  <Github className="h-6 w-6 text-white" />
+                  <FaGithub className="h-6 w-6 text-white" />
                 </div>
                 <span className="font-medium">GitHub</span>
               </motion.a>
