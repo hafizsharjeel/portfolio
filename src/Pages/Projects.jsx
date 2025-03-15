@@ -6,47 +6,7 @@ import { useInView } from "react-intersection-observer"
 import { FaGithub, FaExternalLinkAlt, FaCode, FaLock, FaNetworkWired } from "react-icons/fa"
 
 export default function Projects() {
-  const projectData = [
-    {
-      title: "ImageCryptX",
-      subtitle: "Secure Image Encryption Tool",
-      emoji: "🛡️",
-      description:
-        "ImageCryptX is an advanced encryption tool designed to securely encrypt and decrypt images using state-of-the-art cryptographic techniques. This ensures that sensitive visual data remains protected from unauthorized access. Whether for personal use or secure communication, ImageCryptX guarantees confidentiality and integrity of images.",
-      image: "/imagecryptx.jpg",
-      liveLink: "https://example.com/imagecryptx",
-      githubLink: "https://github.com/example/imagecryptx",
-      demoText: "View Live Demo 🚀",
-      icon: <FaLock className="w-5 h-5" />,
-      tags: ["Encryption", "Python", "Security"],
-    },
-    {
-      title: "CyberPhish",
-      subtitle: "Ethical Phishing Awareness Tool",
-      emoji: "🎣",
-      description:
-        "CyberPhish is an educational cybersecurity tool designed to simulate phishing attacks for security awareness and penetration testing. It helps organizations and individuals understand the risks of phishing by demonstrating how attackers trick users into revealing sensitive credentials. This tool is strictly for ethical hacking and educational purposes to improve security awareness and train users against phishing threats.",
-      image: "/cyberphish.jpg",
-      liveLink: "https://example.com/cyberphish",
-      githubLink: "https://github.com/example/cyberphish",
-      demoText: "How to Use It 📚",
-      icon: <FaCode className="w-5 h-5" />,
-      tags: ["Ethical Hacking", "Security", "Education"],
-    },
-    {
-      title: "Packet-Vision",
-      subtitle: "Advanced Network Packet Analyzer",
-      emoji: "📡",
-      description:
-        "Packet-Vision is a powerful network packet analyzer designed for real-time traffic monitoring, packet inspection, and cybersecurity analysis. It helps penetration testers, security researchers, and network administrators detect vulnerabilities, analyze suspicious network activity, and ensure secure data transmission. Built as a high-performance alternative to traditional tools, PacketVision enhances deep packet inspection (DPI) capabilities for advanced cybersecurity analysis.",
-      image: "/packetvision.jpg",
-      liveLink: "https://example.com/packetvision",
-      githubLink: "https://github.com/example/packetvision",
-      demoText: "How to Use It 📚",
-      icon: <FaNetworkWired className="w-5 h-5" />,
-      tags: ["Network Analysis", "Security", "Monitoring"],
-    },
-  ]
+ const projectData = [ { title: "🛡️ ImageCryptX - Secure Image Encryption Tool", description: "ImageCryptX is an advanced encryption tool designed to securely encrypt and decrypt images using state-of-the-art cryptographic techniques. This ensures that sensitive visual data remains protected from unauthorized access. Whether for personal use or secure communication, ImageCryptX guarantees confidentiality and integrity of images.", image: "/imagecryptx.jpg", liveLink: "https://imagecryptx.streamlit.app/", githubLink: "https://github.com/hafizsharjeel/imagecryptx-app" }, { title: "🎣 CyberPhish - Ethical Phishing Awareness Tool", description: "CyberPhish is an educational cybersecurity tool designed to simulate phishing attacks for security awareness and penetration testing. It helps organizations and individuals understand the risks of phishing by demonstrating how attackers trick users into revealing sensitive credentials. This tool is strictly for ethical hacking and educational purposes to improve security awareness and train users against phishing threats.", image: "/cyberphish.jpg", liveLink: "https://github.com/hafizsharjeel/CyberPhish/blob/main/README.md", githubLink: "https://github.com/hafizsharjeel/CyberPhish" }, { title: "📡 Packet-Vision - Advanced Network Packet Analyzer", description: "Packet-Vision is a powerful network packet analyzer designed for real-time traffic monitoring, packet inspection, and cybersecurity analysis. It helps penetration testers, security researchers, and network administrators detect vulnerabilities, analyze suspicious network activity, and ensure secure data transmission. Built as a high-performance alternative to traditional tools, PacketVision enhances deep packet inspection (DPI) capabilities for advanced cybersecurity analysis.", image: "/packetvision.jpg", liveLink: "https://github.com/hafizsharjeel/Packet-vision/blob/main/README.md", githubLink: "https://github.com/hafizsharjeel/Packet-vision" } ];
 
   const [showMore, setShowMore] = useState(false)
   const controls = useAnimation()
