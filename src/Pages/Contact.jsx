@@ -17,10 +17,10 @@ export default function Contact() {
   }, [controls, inView])
 
   return (
-    <div className="min-h-screen bg-transparent text-gray-100 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div className="min-h-screen bg-transparent text-gray-100 overflow-x-hidden flex flex-col items-center justify-center px-4">
+      <div className="max-w-7xl w-full py-16 md:py-24 text-center">
         {/* Header */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} className="mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-green-400 via-green-500 to-emerald-600 bg-clip-text text-transparent">
               Contact Me
@@ -36,11 +36,11 @@ export default function Contact() {
           </div>
         </motion.div>
 
-        {/* Contact Info */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Side (Contact Details) */}
-          <motion.div ref={ref} initial="hidden" animate={controls} className="w-full">
-            <motion.div className="bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl p-6 md:p-8">
+        {/* Contact Info (Always Stacked & Centered) */}
+        <div className="flex flex-col items-center justify-center gap-8 w-full">
+          {/* Contact Information */}
+          <motion.div ref={ref} initial="hidden" animate={controls} className="w-full max-w-lg">
+            <motion.div className="bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl p-6 md:p-8 text-left">
               <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent mb-6">
                 Get in Touch
               </h2>
@@ -71,7 +71,7 @@ export default function Contact() {
               </div>
 
               {/* Social Links */}
-              <div className="mt-10 flex flex-wrap gap-4 justify-center">
+              <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <motion.a
                   href="https://pk.linkedin.com/in/hafiz-sharjeel-shakeel-260b67179"
                   target="_blank"
@@ -99,9 +99,15 @@ export default function Contact() {
             </motion.div>
           </motion.div>
 
-          {/* Right Side (Quote Section) */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.6 }} className="text-center">
-            <div className="max-w-3xl mx-auto bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl p-8">
+          {/* Quote Section (Always Below Contact Info & Centered) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="w-full max-w-lg"
+          >
+            <div className="bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl p-8 text-center">
               <p className="text-xl text-gray-300 italic mb-4">
                 "I'm always open to discussing new projects, opportunities, or partnerships."
               </p>
